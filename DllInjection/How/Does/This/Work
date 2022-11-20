@@ -1,0 +1,4 @@
+EXECUTOR ISSUES:
+
+After a executor even makes a massive change to it's DLL file, This method will not be functional. In the injection example module script will be the DLL file of each executor.
+This is not copyright because the DLL file will be inserted when injected. Which gives the player full credits.
