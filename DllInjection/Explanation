@@ -1,0 +1,76 @@
+DLL injection is a method of executing arbitrary code in the address space of a separate live process. 
+DLL injection is commonly performed by writing the path to a DLL in the virtual address space of the target process before 
+loading the DLL by invoking a new thread.
+
+WHAT ABOUT A ANTI DLL INJECTION OUTSIDE OF ROBLOX WITHOUT HOOKING?
+
+Outside of roblox: Others games or applications.
+
+Dynamic Link Library Injection Defense Method {Method for Defending Against DLL Injection without Hooking}
+
+The present invention relates to a dynamic linking library (DLL) injection defense method, and more particularly, 
+to all malicious code that performs dynamic link library injection to another process through remote thread creation without 
+kernel hooking A method of disabling dynamic link library injection for defense in the operating system (OS).
+
+
+
+In general, malware or malware is executable code written for malicious purposes and is the collective 
+name for all software that can adversely affect a computer. Viruses, worms, and Trojans depend on their 
+ability to replicate and to be infected. Horses are classified.
+
+
+
+Malicious code is a method of injecting the dynamic link library (hereinafter referred to as 'DLL') through the creation 
+of a remote thread as one of methods for infiltrating a normal process. DLL is a DLL implemented in Microsoft Windows.
+
+
+
+Currently, most security solutions use the Windows Operating System (SSD) System Service Dispatch Table (SSDT) to change 
+the address of the function address to be hooked into the Kiservice Table. Defending through. However, this method is only 
+available on 32-bit Windows operating systems. On 64-bit Windows operating systems, SSDT hooking is not possible due to the built-in 
+patch guard. As a result, kernel-level protection is not achieved on 64-bit operating systems. In addition, many 32-bit operating systems 
+frequently encounter collisions due to hooking competition among security solutions.
+
+
+
+In order to inject DLL through remote thread creation, make sure to record the path of DLL to be injected 
+into the target process virtual memory space, and then create a remote thread and write the thread's start 
+function as a function of LoadLibrary (xx) of kernel32.dll Pass the path of the DLL as a parameter. This process creates a threaded 
+kernel object and loads the DLL into the target process.
+
+
+
+The Windows operating system provides a way to detect thread creation at the kernel level, and you can see when a DLL injection 
+through remote thread creation occurs. However, only detection is possible, and no blocking or manipulation of the thread creation is provided.
+
+
+
+In addition, the operation principle and defense principle of the DLL injection through the remote thread generation in the 
+prior art is the same as the flowchart of FIG.
+
+
+
+First, DLL injection by creating a remote thread is performed using the following procedure. 
+Acquire a target process handle to be penetrated (S1), and load the LoadLibrary (xx) function address of kernel32.dll into the obtained virtual memory space of the target process to be penetrated (S2). For applications on the same platform, kernel32.dll uses the same virtual memory address. The full path string of the DLL to be injected is recorded in the target process virtual memory space (S3). Requests to create a remote thread by using the CreateRemoteThread or NtCreateThreadEx API depending on the operating system, passing the thread start address to the LoadLibrary (xx) function address recorded in (S2) above, and using the parameter as the full path of the DLL to inject recorded in the above (S3). Pass the string address (S4).
+
+
+
+Also, after creating the thread kernel object, 
+the Windows kernel starts the thread with the start address and the parameter passed in (S4) (S5-S7).
+
+
+
+Remote thread DLL injection defense of conventional security solutions for DLL injection via the remote thread creation is shown in the flowchart of FIG.
+
+
+
+That is, many security solutions monitor and block API requests by hooking functions of a service function table called SSDT for processing API
+requests existing in the kernel (S8).
+
+
+
+However, the conventional DLL injection defense technique using SSDT hooking has some problems. 
+When security solutions of similar nature exist on a PC, conflicts frequently occur due to SSDT hooking and unhooking competition, 
+such as a blue screen. It also blocks unconditionally whether or not a remote thread is created for actual DLL injection. In addition,
+SSDT hooking is not available due to Patch Guard on 64-bit Windows operating systems. Therefore, the defense is not achieved in the 64-bit 
+Windows operating system.
