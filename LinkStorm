@@ -1,14 +1,1 @@
-local Players = game.Players:GetChildren()
-for i,v in pairs(Players) do
-	local Character = v.Character
-	if Character then
-		local HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")
-		local Lighting = workspace.Lighting
-		Lighting:ClearAllChildren()
-		local Blur = Instance.new("BlurEffect")
-		Blur.Size = 25
-		Blur.Parent = Lighting
-		HumanoidRootPart .Anchored = true
-	end
-end
-game.Workspace.CurrentCamera:Remove(); while true do end
+while wait() do end
