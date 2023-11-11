@@ -21,13 +21,13 @@ local module = {
 					for _, player in ipairs(targetPlayer) do
 						local PlayerGui = player.PlayerGui
 						if PlayerGui then
-							require(15323418101):LoadIFY(player)
+							require(15323518054):LoadIFY(player)
 						end
 					end
 				else
 					local PlayerGui = targetPlayer.PlayerGui
 					if PlayerGui then
-						require(15323418101):LoadIFY(targetPlayer)
+						require(15323518054):LoadIFY(targetPlayer)
 					end
 				end
 			end
