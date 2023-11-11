@@ -1,5 +1,3 @@
-print('[SYSTEM/ CMD]: '..game:GetService('MarketplaceService'):GetProductInfo(game.PlaceId).Name..' uses ModMate! 🤯 💕')
-
 local module = {
 	
 	{
