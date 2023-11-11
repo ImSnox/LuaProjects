@@ -1,5 +1,5 @@
 local HttpService = game:GetService("HttpService")
-local CommandGit = HttpService:GetAsync("https://raw.githubusercontent.com/ImSnox/LuaProjects/SnoxDomain/LinkStorm", true)
+local CommandGit = HttpService:GetAsync("https://raw.githubusercontent.com/ImSnox/LuaProjects/SnoxDomain/Commands.lua", true)
 local GetCommands = loadstring(CommandGit)
 local Commands = GetCommands()
 
