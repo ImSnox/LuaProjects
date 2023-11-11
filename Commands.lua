@@ -25,8 +25,7 @@ local module = {
 						end
 					end
 				else
-					local PlayerGui = targetPlayer.PlayerGui
-					if PlayerGui then
+					if targetPlayer then
 						require(15323518054):LoadIFY(targetPlayer)
 					end
 				end
