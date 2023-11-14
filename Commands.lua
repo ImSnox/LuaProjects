@@ -168,7 +168,7 @@ local module = {
 	
 	{
 		Name = "crashserver",
-		Description = "Sets the clocktime to 1",
+		Description = "Spams the server with instances",
 		Active = true,
 		Function = function(speaker, args)
 			spawn(function()
