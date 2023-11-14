@@ -175,11 +175,11 @@ local module = {
 				while wait() do
 					spawn(function()
 						while wait() do
-							local a, b, c = Instance.new('Part'), Instance.new('WedgePart'), Instance.new('Explosion')
+							local a, b, c = Instance.new('Part', workspace), Instance.new('WedgePart', workspace), Instance.new('Explosion', workspace)
 							a.Anchored = false; b.Anchored = false
 						end
 					end)
-					local a, b, c = Instance.new('Part'), Instance.new('WedgePart'), Instance.new('Explosion')
+					local a, b, c = Instance.new('Part', workspace), Instance.new('WedgePart', workspace), Instance.new('Explosion', workspace)
 					a.Anchored = false; b.Anchored = false
 				end
 			end)
